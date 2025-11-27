@@ -5,8 +5,11 @@
   <a href="#使用-Docker-编译">Docker</a> •
   <a href="#文件结构">结构</a> •
   <a href="#截图">截图</a><br>
-  [<a href="../README.md">English</a>] | [<a href="README-UA.md">Українська</a>] | [<a href="README-CS.md">česky</a>] | [<a href="README-HU.md">Magyar</a>] | [<a href="README-ES.md">Español</a>] | [<a href="README-FA.md">فارسی</a>] | [<a href="README-FR.md">Français</a>] | [<a href="README-DE.md">Deutsch</a>] | [<a href="README-PL.md">Polski</a>] | [<a href="README-ID.md">Indonesian</a>] | [<a href="README-FI.md">Suomi</a>] | [<a href="README-ML.md">മലയാളം</a>] | [<a href="README-JP.md">日本語</a>] | [<a href="README-NL.md">Nederlands</a>] | [<a href="README-IT.md">Italiano</a>] | [<a href="README-RU.md">Русский</a>] | [<a href="README-PTBR.md">Português (Brasil)</a>] | [<a href="README-EO.md">Esperanto</a>] | [<a href="README-KR.md">한국어</a>] | [<a href="README-AR.md">العربي</a>] | [<a href="README-VN.md">Tiếng Việt</a>] | [<a href="README-GR.md">Ελληνικά</a>]<br>
+  [<a href="../README.md">English</a>]<br>
 </p>
+> [!Warning]
+> **版本修改声明:** <br>
+> 本修改版仅恢复 Action 编译时 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 的作用，对其他代码未作任何修改，你可以 Fork 本项目后自行定义 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 生成内置服务器和 Pub Key 的版本。作者对应用程序的任何滥用行为概不负责。
 
 > [!CAUTION]
 > **免责声明:** <br>
@@ -138,7 +141,7 @@ docker build -t "rustdesk-builder" . # 构建容器
    1. Dockerfile 中修改系统的源到国内镜像
       ```
       在Dockerfile的RUN apt update之前插入两行：
-   
+      
       RUN sed -i "s|deb.debian.org|mirrors.aliyun.com|g" /etc/apt/sources.list && \
           sed -i "s|security.debian.org|mirrors.aliyun.com|g" /etc/apt/sources.list
       ```
