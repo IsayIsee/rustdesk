@@ -8,8 +8,8 @@
   [<a href="../README.md">English</a>]<br>
 </p>
 > [!Warning]
-> **版本修改声明:** <br>
-> 本修改版仅恢复 Action 编译时 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 的作用，对其他代码未作任何修改，你可以 Fork 本项目后自行定义 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 生成内置服务器和 Pub Key 的版本。作者对应用程序的任何滥用行为概不负责。
+> **版本修改说明:** <br>
+> 本修改版仅恢复 Action 编译时 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 的作用，对其他代码未作任何修改，你可以 Fork 本项目后自行定义 `RENDEZVOUS_SERVER`, `RS_PUB_KEY` 生成内置服务器地址和 Pub Key 的版本。作者对应用程序的任何滥用行为概不负责。
 
 > [!CAUTION]
 > **免责声明:** <br>
