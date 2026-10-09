@@ -1024,6 +1024,19 @@ pub fn check_software_update() {
 // Because the url is always `https://api.rustdesk.com/version/latest`.
 #[tokio::main(flavor = "current_thread")]
 pub async fn do_check_software_update() -> hbb_common::ResultType<()> {
+    // This build carries its own rendezvous server and public key, so an update
+    // served by upstream would replace it with a stock client and silently drop
+    // both. `do_check_software_update` is the single funnel every path goes
+    // through -- the background checker, the GUI's manual check and the macOS
+    // root updater all end up here -- so refusing to resolve an update URL
+    // disables all of them at once.
+    //
+    // Set at build time; an unset GitHub variable arrives as an empty string,
+    // which must not count as "on". Same guard as hbb_common's RS_PUB_KEY.
+    if matches!(option_env!("RS_DISABLE_UPDATE_CHECK"), Some(v) if !v.is_empty() && v != "false") {
+        *SOFTWARE_UPDATE_URL.lock().unwrap() = String::new();
+        return Ok(());
+    }
     let (request, url) =
         hbb_common::version_check_request(hbb_common::VER_TYPE_RUSTDESK_CLIENT.to_string());
     let proxy_conf = Config::get_socks();

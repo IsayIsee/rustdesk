@@ -54,6 +54,11 @@ env:
   RS_PUB_KEY: "${{ secrets.RS_PUB_KEY }}"
   RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
   API_SERVER: "${{ secrets.API_SERVER }}"
+  # Set this repository *variable* (not secret) to disable the software update
+  # check, so a client built with the servers above can never pull a stock
+  # upstream build and lose them. Any non-empty value except "false" enables it.
+  # Leave unset to keep upstream's behaviour. See do_check_software_update().
+  RS_DISABLE_UPDATE_CHECK: "${{ vars.RS_DISABLE_UPDATE_CHECK }}"
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}-2"
 
